@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Register | Tradvo{% endblock title %}
+
+{% block content %}
+{% if errors %}
+<ul>
+  {% for err in errors %}
+    <li class="error col-6"> {{err}} </li>
+  {% endfor %}
+</ul>
+{% endif %}
+<div class="row">
+    <div class="col-5 m-5">
+        <form action='{% url "register" %}' method="post">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="username">Username</label>
+              {{form.username}}
+              
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                {{form.email}}
+            </div>
+            <div class="form-group">
+              <label for="password1">Password</label>
+              {{form.password1}}
+            </div>
+            <div class="form-group">
+                <label for="password2">Confirm Password</label>
+                {{form.password2}}
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+    </div>
+</div>
+{% endblock content %}

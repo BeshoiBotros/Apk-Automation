@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+
+{% block title %}Home | Tradvo{% endblock title %}
+
+{% block content %}
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createAppModal">
+  Add New App
+</button>
+
+<!-- Modal for Creating New App -->
+<div class="modal fade" id="createAppModal" tabindex="-1" role="dialog" aria-labelledby="createAppModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="createAppModalLabel">Create New App</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              {% include 'apk_management/app_management_form.html' %}
+          </div>
+      </div>
+  </div>
+</div>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Screenshot 1</th>
+        <th scope="col">Screenshot 2</th>
+        <th scope="col">Video</th>
+        <th scope="col">UI Hierarchy</th>
+        <th scope="col">Screen Changed</th>
+        <th scope="col">Created At</th>
+        <th scope="col">Updated At</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead> 
+    <tbody>
+      {% for app in apps %}
+        <tr>
+          <th scope="row"> {{ app.pk }} </th>
+          <td> {{ app.name }} </td>
+          <td>
+            {% if app.first_screen_screenshot_path %}
+              <img src="{{ app.first_screen_screenshot_path.url }}" width="50px" />
+            {% else %}
+              <p class="text-center">NaN</p>
+            {% endif %}
+          </td>
+          <td>
+            {% if app.second_screen_screenshot_path %}
+              <img src="{{ app.second_screen_screenshot_path.url }}" width="50px" />
+            {% else %}
+              <p class="text-center">NaN</p>
+            {% endif %}
+          </td>
+          <td>
+            {% if app.video_recording_path %}
+              <a href="{{ app.video_recording_path.url }}">Video</a>
+            {% else %}
+              <p class="text-center">NaN</p>
+            {% endif %}
+          </td>
+          <td>
+            {% if app.ui_hierarchy %}
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#uiHierarchyModal{{ app.pk }}">
+                View UI Hierarchy
+            </button>
+            {% else %}
+            <p class="text-center">NaN</p>
+            {% endif %}
+          </td>
+          <td>{{ app.screen_changed }}</td>
+          <td>{{ app.created_at }}</td>
+          <td>{{ app.updated_at }}</td>
+          <td>
+            <div class="btn-group dropleft">
+              <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                Actions
+              </button>
+              <div class="dropdown-menu p-2">
+                <a class="dropdown-item alert-success" href="{% url 'run_app' app.pk %}">Run</a>
+                <button class="dropdown-item alert-warning" type="button" data-toggle="modal" data-target="#updateAppModal{{ app.pk }}">Update</button>
+                <a href="{% url 'home-delete-app' pk=app.pk %}" class="dropdown-item alert-danger">Delete</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <!-- Modal for Updating App -->
+        <div class="modal fade" id="updateAppModal{{ app.pk }}" tabindex="-1" role="dialog" aria-labelledby="updateAppModalLabel{{ app.pk }}" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="updateAppModalLabel{{ app.pk }}">Update App</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                      {% include 'apk_management/update_app.html' %}
+                  </div>
+              </div>
+          </div>
+        </div>
+
+        <!-- Modal for Viewing UI Hierarchy -->
+        <div class="modal fade" id="uiHierarchyModal{{ app.pk }}" tabindex="-1" role="dialog" aria-labelledby="uiHierarchyModalLabel{{ app.pk }}" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="uiHierarchyModalLabel{{ app.pk }}">UI Hierarchy for {{ app.name }}</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                      <pre>{{ app.ui_hierarchy }}</pre>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+              </div>
+          </div>
+        </div>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  {% if not apps %}
+    <h3 class="alert alert-warning col-12 text-center">No apps to view</h3>
+  {% endif %}
+{% endblock content %}

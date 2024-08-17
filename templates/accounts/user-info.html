@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %} Info | Tredvo {% endblock title %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <!-- User Profile Card -->
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">User Info</h4>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-3">Username:</dt>
+                        <dd class="col-sm-9">{{ user.username }}</dd>
+
+                        <dt class="col-sm-3">Email:</dt>
+                        <dd class="col-sm-9">{{ user.email }}</dd>
+
+                        <dt class="col-sm-3">Firstname:</dt>
+                        <dd class="col-sm-9">{{ user.first_name }}</dd>
+                        
+                        <dt class="col-sm-3">Lastname:</dt>
+                        <dd class="col-sm-9">{{ user.last_name }}</dd>
+                    </dl>
+                </div>
+                <div class="card-footer text-right">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModal">
+                        Edit Profile
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateModalLabel">Update Profile</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% if errors %}
+            <ul>
+              {% for err in errors %}
+                <li class="error col-6"> {{err}} </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+            <form method="post" action="{% url 'user-info' %}">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        {{form.username}}
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        {{form.email}}
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Firstname</label>
+                        {{form.first_name}}
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Lastname</label>
+                        {{form.last_name}}
+                    </div>
+                    <!-- Add more fields as needed -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
