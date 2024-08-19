@@ -1,10 +1,10 @@
 {% extends "base.html" %}
-
+{% load i18n %}
 {% block title %}Home | Tradvo{% endblock title %}
 
 {% block content %}
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createAppModal">
-  Add New App
+  {% trans "Add New App" %}
 </button>
 
 <!-- Modal for Creating New App -->
@@ -12,7 +12,7 @@
   <div class="modal-dialog" role="document">
       <div class="modal-content">
           <div class="modal-header">
-              <h5 class="modal-title" id="createAppModalLabel">Create New App</h5>
+              <h5 class="modal-title" id="createAppModalLabel">{% trans "Create New App" %}</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
               </button>
@@ -28,15 +28,15 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Screenshot 1</th>
-        <th scope="col">Screenshot 2</th>
-        <th scope="col">Video</th>
-        <th scope="col">UI Hierarchy</th>
-        <th scope="col">Screen Changed</th>
-        <th scope="col">Created At</th>
-        <th scope="col">Updated At</th>
-        <th scope="col">Actions</th>
+        <th scope="col">{% trans "Name" %}</th>
+        <th scope="col">{% trans "Screenshot 1" %}</th>
+        <th scope="col">{% trans "Screenshot 2" %}</th>
+        <th scope="col">{% trans "Video" %}</th>
+        <th scope="col">{% trans "UI Hierarchy" %}</th>
+        <th scope="col">{% trans "Screen Changed" %}</th>
+        <th scope="col">{% trans "Created At" %}</th>
+        <th scope="col">{% trans "Updated At" %}</th>
+        <th scope="col">{% trans "Actions" %}</th>
       </tr>
     </thead> 
     <tbody>
@@ -48,30 +48,30 @@
             {% if app.first_screen_screenshot_path %}
               <img src="{{ app.first_screen_screenshot_path.url }}" width="50px" />
             {% else %}
-              <p class="text-center">NaN</p>
+              <p class="text-center">{% trans "NaN" %}</p>
             {% endif %}
           </td>
           <td>
             {% if app.second_screen_screenshot_path %}
               <img src="{{ app.second_screen_screenshot_path.url }}" width="50px" />
             {% else %}
-              <p class="text-center">NaN</p>
+              <p class="text-center">{% trans "NaN" %}</p>
             {% endif %}
           </td>
           <td>
             {% if app.video_recording_path %}
               <a href="{{ app.video_recording_path.url }}">Video</a>
             {% else %}
-              <p class="text-center">NaN</p>
+              <p class="text-center">{% trans "NaN" %}</p>
             {% endif %}
           </td>
           <td>
             {% if app.ui_hierarchy %}
             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#uiHierarchyModal{{ app.pk }}">
-                View UI Hierarchy
+                {% trans "View UI Hierarchy" %}
             </button>
             {% else %}
-            <p class="text-center">NaN</p>
+            <p class="text-center">{% trans "NaN" %}</p>
             {% endif %}
           </td>
           <td>{{ app.screen_changed }}</td>
@@ -80,12 +80,12 @@
           <td>
             <div class="btn-group dropleft">
               <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                Actions
+                {% trans "Actions" %}
               </button>
               <div class="dropdown-menu p-2">
-                <a class="dropdown-item alert-success" href="{% url 'run_app' app.pk %}">Run</a>
-                <button class="dropdown-item alert-warning" type="button" data-toggle="modal" data-target="#updateAppModal{{ app.pk }}">Update</button>
-                <a href="{% url 'home-delete-app' pk=app.pk %}" class="dropdown-item alert-danger">Delete</a>
+                <a class="dropdown-item alert-success" href="{% url 'run_app' app.pk %}">{% trans "Run" %}</a>
+                <button class="dropdown-item alert-warning" type="button" data-toggle="modal" data-target="#updateAppModal{{ app.pk }}">{% trans "Update" %}</button>
+                <a href="{% url 'home-delete-app' pk=app.pk %}" class="dropdown-item alert-danger">{% trans "Delete" %}</a>
               </div>
             </div>
           </td>
@@ -96,7 +96,7 @@
           <div class="modal-dialog" role="document">
               <div class="modal-content">
                   <div class="modal-header">
-                      <h5 class="modal-title" id="updateAppModalLabel{{ app.pk }}">Update App</h5>
+                      <h5 class="modal-title" id="updateAppModalLabel{{ app.pk }}">{% trans "Update App" %}</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                       </button>
@@ -113,7 +113,7 @@
           <div class="modal-dialog" role="document">
               <div class="modal-content">
                   <div class="modal-header">
-                      <h5 class="modal-title" id="uiHierarchyModalLabel{{ app.pk }}">UI Hierarchy for {{ app.name }}</h5>
+                      <h5 class="modal-title" id="uiHierarchyModalLabel{{ app.pk }}">{% trans "UI Hierarchy for" %} {{ app.name }}</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                       </button>
@@ -132,6 +132,6 @@
   </table>
 
   {% if not apps %}
-    <h3 class="alert alert-warning col-12 text-center">No apps to view</h3>
+    <h3 class="alert alert-warning col-12 text-center">{% trans "No apps to view" %}</h3>
   {% endif %}
 {% endblock content %}

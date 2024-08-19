@@ -1,0 +1,160 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-19 19:26+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: .\templates\accounts\login.html:5 .\templates\header.html:15
+msgid "Login"
+msgstr "Connexion"
+
+#: .\templates\accounts\login.html:20
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: .\templates\accounts\login.html:31
+msgid "Password"
+msgstr "Mot de passe"
+
+#: .\templates\accounts\login.html:41
+msgid "Submit"
+msgstr "Envoyer"
+
+
+#: .\templates\apk_management\app_management_form.html:5
+#: .\templates\apk_management\home.html:31
+#: .\templates\apk_management\update_app.html:7
+msgid "Name"
+msgstr "Nom"
+
+#: .\templates\apk_management\app_management_form.html:9
+#: .\templates\apk_management\update_app.html:11
+msgid "APK File"
+msgstr "Fichier APK"
+
+#: .\templates\apk_management\app_management_form.html:12
+#: .\templates\apk_management\update_app.html:14
+msgid "Save"
+msgstr "Sauvegarder"
+
+#: .\templates\apk_management\home.html:7
+msgid "Add New App"
+msgstr "Ajouter une nouvelle application"
+
+#: .\templates\apk_management\home.html:15
+msgid "Create New App"
+msgstr "Créer une nouvelle application"
+
+#: .\templates\apk_management\home.html:32
+msgid "Screenshot 1"
+msgstr "Capture d'écran 1"
+
+#: .\templates\apk_management\home.html:33
+msgid "Screenshot 2"
+msgstr "Capture d'écran 2"
+
+#: .\templates\apk_management\home.html:34
+msgid "Video"
+msgstr "Vidéo"
+
+#: .\templates\apk_management\home.html:35
+msgid "UI Hierarchy"
+msgstr "Hiérarchie de l'interface"
+
+#: .\templates\apk_management\home.html:36
+msgid "Screen Changed"
+msgstr "Écran changé"
+
+#: .\templates\apk_management\home.html:37
+msgid "Created At"
+msgstr "Créé le"
+
+#: .\templates\apk_management\home.html:38
+msgid "Updated At"
+msgstr "Mis à jour le"
+
+#: .\templates\apk_management\home.html:39
+#: .\templates\apk_management\home.html:83
+msgid "Actions"
+msgstr "Actions"
+
+#: .\templates\apk_management\home.html:51
+#: .\templates\apk_management\home.html:58
+#: .\templates\apk_management\home.html:65
+#: .\templates\apk_management\home.html:74
+msgid "NaN"
+msgstr "N/A"
+
+#: .\templates\apk_management\home.html:71
+msgid "View UI Hierarchy"
+msgstr "Voir la hiérarchie de l'interface"
+
+#: .\templates\apk_management\home.html:86
+msgid "Run"
+msgstr "Exécuter"
+
+#: .\templates\apk_management\home.html:87
+msgid "Update"
+msgstr "Mettre à jour"
+
+#: .\templates\apk_management\home.html:88
+msgid "Delete"
+msgstr "Supprimer"
+
+#: .\templates\apk_management\home.html:99
+msgid "Update App"
+msgstr "Mettre à jour l'application"
+
+#: .\templates\apk_management\home.html:116
+msgid "UI Hierarchy for"
+msgstr "Hiérarchie de l'interface pour"
+
+#: .\templates\apk_management\home.html:135
+msgid "No apps to view"
+msgstr "Aucune application à afficher"
+
+#: .\templates\header.html:6
+msgid "Toggle navigation"
+msgstr "Basculer la navigation"
+
+#: .\templates\header.html:12
+msgid "Home"
+msgstr "Accueil"
+
+#: .\templates\header.html:12
+msgid "current"
+msgstr "actuel"
+
+#: .\templates\header.html:18
+msgid "Logout"
+msgstr "Déconnexion"
+
+#: .\templates\header.html:21
+msgid "Register"
+msgstr "S'inscrire"
+
+#: .\templates\header.html:24
+msgid "Account"
+msgstr "Compte"
+
+#: .\templates\header.html:32 .\templates\header.html:41
+msgid "English"
+msgstr "Anglais"
+
+#: .\templates\header.html:34 .\templates\header.html:42
+msgid "Français"
+msgstr "Français"
