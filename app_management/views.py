@@ -19,7 +19,7 @@ class HomeView(View):
         context = {
             "apps": user_apps,
             "form": form,
-            "update_form": form,  # Pass form for rendering in modal
+            "update_form": form,
         }
         return render(request, "apk_management/home.html", context)
     

@@ -110,17 +110,18 @@ class UserForm(forms.ModelForm):
         model = User
         fields = ['username', 'email', 'first_name', 'last_name']
 
-    def clean(self) -> dict[str, Any]:
-        cleaned_data = super().clean()
-        email = cleaned_data.get('email')
-        username = cleaned_data.get('username')
-        if username_exists(username):
-            raise ValidationError("Username already exists")
-        return cleaned_data
-    
-    def update(self, request):
-        filterd_data = {key : value for key, value in self.cleaned_data.items() if value is not None or value != ''}
-        for key, value in filterd_data.items():
-            setattr(request.user, key, value)
-        request.user.save()
-        return request.user
+    def update(self, instance):
+        
+        data = self.cleaned_data
+        filtered_data = {}
+        
+        for key, val in data.items():
+            if val not in [None, '']:
+                filtered_data[key] = val
+        
+        for field, value in filtered_data.items():
+            setattr(instance, field, value)
+
+        instance.save()
+
+        return instance

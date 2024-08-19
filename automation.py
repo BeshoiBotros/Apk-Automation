@@ -3,6 +3,7 @@ import time
 from appium.webdriver.appium_service import AppiumService
 from appium import webdriver
 from appium.options.android import UiAutomator2Options
+from apk_manager.settings import MEDIA_ROOT
 from app_management.models import AppManagement
 from selenium.common.exceptions import WebDriverException, InvalidSessionIdException
 
@@ -29,13 +30,13 @@ def automate_app(app: AppManagement):
 
         first_ui = driver.page_source
 
-        first_screenshot_path = os.path.join('apk/images/first_screen_screenshot_path/', f'first_screenshot_{app.pk}.png')
+        first_screenshot_path = os.path.join(MEDIA_ROOT, 'apk/images/first_screen_screenshot_path/', f'first_screenshot_{app.pk}.png')
         driver.save_screenshot(first_screenshot_path)
         app.first_screen_screenshot_path.name = first_screenshot_path
 
         time.sleep(5)  
 
-        second_screenshot_path = os.path.join('apk/images/second_screen_screenshot_path/', f'second_screenshot_{app.pk}.png')
+        second_screenshot_path = os.path.join(MEDIA_ROOT, 'apk/images/second_screen_screenshot_path/', f'second_screenshot_{app.pk}.png')
         driver.save_screenshot(second_screenshot_path)
         app.second_screen_screenshot_path.name = second_screenshot_path
 

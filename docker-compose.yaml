@@ -1,0 +1,8 @@
+version: '3.0'
+
+services:
+  django:
+    image: apk-manager:0.0.1
+    build: .
+    ports:
+      - "8080:8000"

@@ -76,12 +76,14 @@ class UserView(View, LoginRequiredMixin):
 
     # update my info
     def post(self, request, *args, **kwargs):
+        user = request.user
         form = forms.UserForm(data=request.POST)
-        if form.is_valid():
-            form.update(request=request)
-            return redirect('user-info')
-        context = {
-            'form' : form,
-            'errors' : form.non_field_errors
-        }
+        if request.POST:
+            if form.is_valid():
+                form.update(instance=user)
+                return redirect('user-info')
+            context = {
+                'form' : form,
+                'errors' : form.non_field_errors
+            }
         return render(request, 'accounts/user-info.html', context)
