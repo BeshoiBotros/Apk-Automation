@@ -19,8 +19,8 @@ Apk-Automation is a Django-based web application designed for run APK files and 
 1. **Create VENV:**
    ```bash
    python -m venv apk_manager_venv
-   for linux: source venv/bin/activate 
-   for windows: .\apk_manager_venv\Scripts\activate
+   linux: source venv/bin/activate 
+   windows: .\apk_manager_venv\Scripts\activate
    cd apk_manager_venv
 
 2. **Clone the Repository:**
