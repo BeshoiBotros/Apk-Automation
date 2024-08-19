@@ -13,7 +13,7 @@ Apk-Automation is a Django-based web application designed for run APK files and 
 - **Database:** Added instructions for configuring MySQL as the database with name apk_manager
 
 ## Getting Started
-Make sure that you 
+
 ### Installation
 
 1. **Create VENV:**
